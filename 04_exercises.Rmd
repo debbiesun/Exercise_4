@@ -241,6 +241,35 @@ starbucks_with_2018_pop_est%>%
   
   * If there are other variables you want to add that could enhance your plot, do that now.  
   
+  
+```{r}
+favorite <- tibble(
+  place = c("Home", "Macalester College", "MIA", 
+            "Grand Catch", "Mill City Museum", "Kowloon",
+            "Sidewalk Kitchen", "City Hall", "Como Zoo Park","Minnehaha Park"),
+  long = c(-82.476770, -93.1712321, -93.272755 , 
+           -93.165296,-93.27041, -93.224551, 
+           -93.226371,-93.093855 , -93.148007, -93.209999),
+  lat = c(42.804690, 44.9378965, 44.958184,
+          44.934765, 44.984957, 44.973636, 
+          44.973674, 44.9438,  44.979776,44.915001),
+  Top_3  = c("Yes", "Yes", "No", 
+             "No","No","Yes",
+             "No", "No","No","No")
+  )
+
+leaflet(data = favorite) %>% 
+  addProviderTiles(providers$Stamen.Watercolor) %>% 
+  addCircles(lng = ~long, 
+             lat = ~lat, 
+             label = ~place, 
+             weight = 10, 
+             opacity = 1, 
+             color = col2hex("darkblue")) 
+
+```
+  
+  
 ## Revisiting old datasets
 
 This section will revisit some datasets we have used previously and bring in a mapping component. 
