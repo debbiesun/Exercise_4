@@ -144,8 +144,7 @@ ggmap(Twin) +
 
   3. In the Twin Cities plot, play with the zoom number. What does it do?  (just describe what it does - don't actually include more than one map).  
   
-As the zoom number increases, it gives us a larger scale of picture; if the zoom number decreases, then we would zoom in certain area for more details.
-  
+As the zoom number increases, it shows more detail so they should be used with maps of smaller areas.
   
 
   4. Try a couple different map types (see `get_stamenmap()` in help and look at `maptype`). Include a map with one of the other map types.  
@@ -247,16 +246,20 @@ favorite <- tibble(
   place = c("Home", "Macalester College", "MIA", 
             "Grand Catch", "Mill City Museum", "Kowloon",
             "Sidewalk Kitchen", "City Hall", "Como Zoo Park","Minnehaha Park"),
-  long = c(-82.476770, -93.1712321, -93.272755 , 
+  long = c(-93.17568026889775, -93.1712321, -93.272755 , 
            -93.165296,-93.27041, -93.224551, 
            -93.226371,-93.093855 , -93.148007, -93.209999),
-  lat = c(42.804690, 44.9378965, 44.958184,
+  lat = c(44.934095527148, 44.9378965, 44.958184,
           44.934765, 44.984957, 44.973636, 
           44.973674, 44.9438,  44.979776,44.915001),
   Top_3  = c("Yes", "Yes", "No", 
              "No","No","Yes",
              "No", "No","No","No")
   )
+```
+
+
+```{r}
 
 leaflet(data = favorite) %>% 
   addProviderTiles(providers$Stamen.Watercolor) %>% 
