@@ -12,7 +12,7 @@ output:
 
 
 ```{r setup, include=FALSE}
-#knitr::opts_chunk$set(echo = TRUE, error=TRUE, message=FALSE, warning=FALSE)
+knitr::opts_chunk$set(echo = TRUE, error=TRUE, message=FALSE, warning=FALSE)
 ```
 
 ```{r libraries}
@@ -426,8 +426,31 @@ covid_with_ppl%>%
   
   
 ```{r}
+overall<-covid19%>%
+  mutate(state = str_to_lower(state))%>%
+  mutate(quarter = quarter(date))%>%
+  group_by(state,fips,quarter)%>%
+  top_n(n = -1,wt = date)%>%
+  left_join(census_pop_est_2018,
+            by = "state") %>% 
+  mutate(cases_per_10000 = (cases/est_pop_2018)*10000)
 
+overall%>%
+  ggplot() +
+  geom_map(map = state_map,
+           aes(map_id = state,
+               fill = cases_per_10000)) +
+  expand_limits(x = states_map$long, y = states_map$lat) + 
+  theme_map()+
+  facet_wrap(~quarter)+
+  labs(title = "Cases per 10000 over course of the year")
+  
+  
+  
 ```
+  
+  
+  I choose the first day of each quarter for each state and see how the cases per 10000 people change over time. According to the graph, we can see that the cases per 10000 are getting worse as time passes by.
   
   
 ## Minneapolis police stops
