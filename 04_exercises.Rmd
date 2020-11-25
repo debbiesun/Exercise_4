@@ -226,6 +226,8 @@ starbucks_with_2018_pop_est%>%
   theme_map() +
   theme(legend.background = element_blank())
 ```
+
+In the U.S, it seems that Starbucks are heavily concentrated on the east and west coasts; while the central America seems to have less Starbucks. 
   
 
 ### A few of your favorite things (`leaflet`)
@@ -288,6 +290,7 @@ leaflet(data = favorite) %>%
 
 ```
   
+I connect these locations based on my daily routine and life radius. 
   
 ## Revisiting old datasets
 
@@ -521,6 +524,7 @@ map1
 
 ```
   
+  It seems that the northeastean area has greater proportion of being suspicious; while southeastern area seems to have less proportion of being suspicious.
   
   18. Use `leaflet` to create a map of your own choosing. Come up with a question you want to try to answer and use the map to help answer that question. Describe what your map shows. 
   
@@ -547,8 +551,8 @@ map2<-leaflet(mpls_all) %>%
 
 map2
 ```
-  
-  
+ 
+ My question is to see the level of poverty in this region. From the map, it seems that the southwestern area has more people who are in poverty; while in the center of Minneapolis, less people are suffering from poverty.
   
 ## GitHub link
 
